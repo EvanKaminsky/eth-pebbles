@@ -8,7 +8,7 @@
     "difficulty": "0x400",
     "gasLimit": "0x8000000",
     "alloc": {
-        "0dfabf1d125fd66ed5d217b2ecd20968a3054879":
+        "eca517352b672ec75e0d16947449e909f0df5308":
          { "balance": "100000000000000000000" }
     }
 }

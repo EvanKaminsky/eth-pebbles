@@ -1,4 +1,11 @@
-# Current Workflow
+# Approach 2 - Import blocks from a blockchain binary
+localgeth import data/ethereumMainnetBlockchain-2016-05-30.binary  --datadir /Users/evankaminsky/Desktop/Ethereum/go-ethereum/eth-pebbles/tmp/importnet1
+
+localgeth --datadir tmp/testnet1 --metrics console
+
+
+
+# Approach 1 - Setup local network with one transaction net and two mining nets
 localgeth --datadir tmp/testnet1 account new -> Non-Miner, Put account hash in genesis block
 localgeth --datadir tmp/testnet1 account new
 localgeth --datadir tmp/testnet2 account new -> Miner 1
@@ -17,8 +24,7 @@ Do transactions on node 1
 miner.start(1)              -> Start miner on node 2
 miner.start(1)              -> Start miner on node 3
 
-
-# Links
+# Links & Resources
 https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster
 https://gist.github.com/giladoved/d753d66cb5caca118a0cab59aa4b265f
 
@@ -40,12 +46,11 @@ localgeth --datadir tmp/testnet1 --networkid 1999  --port 35555 --metrics --exec
 
 # Debug Keys
 debug.metrics(true).eth.db.chaindata.user.readscount
-debug.metrics(true).eth.db.chaindata.user.writescount
 
 # Adding Peers
 localgeth --datadir tmp/testnet2 --networkid 1999 init BaselineGenesis.json
 localgeth --datadir tmp/testnet2 --networkid 1999 --port 35556 --ipcdisable --rpcport 8102 --maxpeers 2 --metrics console
-Other parameters: --nodiscover --maxpeers 1 --rpccorsdomain "*" --rpc
+Other parameters: --nodiscover --maxpeers 1 --rpccorsdomain "*" --rpc     
 admin.nodeInfo.enode
 admin.addPeer(...)
 

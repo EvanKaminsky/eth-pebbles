@@ -1,11 +1,12 @@
 function stats() {
-    console.log("Reads: "     + debug.metrics(true).eth.db.chaindata.user.readscount.Overall);
-    console.log("Writes: "    + debug.metrics(true).eth.db.chaindata.user.writescount.Overall);
-    console.log("Pending: "   + eth.pendingTransactions.length);
-    console.log("Pending-2: " + eth.getBlock("pending").transactions.length);
-    console.log("Peers: "     + admin.peers.length);
-    console.log("Enode: "     + admin.nodeInfo.enode);
-    console.log("Block #: "   + eth.blockNumber);
+    console.log("Reads:\t\t"     + debug.metrics(true).eth.db.chaindata.user.readscount.Overall);
+    console.log("Writes:\t\t"    + debug.metrics(true).eth.db.chaindata.user.writescount.Overall);
+    console.log("Pending:\t"     + eth.pendingTransactions.length);
+    console.log("Pending-Str:\t" + eth.getBlock("pending").transactions.length);
+    console.log("Peers:\t\t"     + admin.peers.length);
+    console.log("Block #:\t"     + eth.blockNumber);
+    console.log("Enode: "        + admin.nodeInfo.enode);
+    console.log("")
 }
 
 function pendingTransactions() {
