@@ -1,3 +1,25 @@
+# Approach 2 - Import blocks from a blockchain binary - Manually
+Run:
+localgeth --metrics --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
+
+When it reaches one segment before the desired amount, control-C it.
+
+In the console get the stats:
+
+eth.blockNumber
+debug.metrics(true).eth.db.chaindata.user.readscount
+debug.metrics(true).eth.db.chaindata.user.reads
+debug.metrics(true).eth.db.chaindata.user.writescount
+debug.metrics(true).eth.db.chaindata.user.writes
+
+localgeth --metrics --datadir tmp/eth1 --networkid 1999 console
+
+To reset the experiment do:
+rm -rf tmp/eth1
+localgeth removedb
+
+
+
 # Approach 2 - Import blocks from a blockchain binary
 localgeth import data/ethereumMainnetBlockchain-2016-05-30.binary  --datadir /Users/evankaminsky/Desktop/Ethereum/go-ethereum/eth-pebbles/tmp/importnet1
 
