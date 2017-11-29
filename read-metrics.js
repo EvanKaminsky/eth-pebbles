@@ -1,7 +1,6 @@
 console.log('Starting to collect metrics');
 
-var checkpoints = [100000, 200000, 300000, 400000, 500000];
-var checkpoints = [215000, 216000, 217000, 218000, 219000, 220000];
+var checkpoints = [0, 100000, 200000, 300000, 400000, 500000];
 
 checkpoints.forEach(function(checkpoint) {
     while (eth.blockNumber < checkpoint) {    }
