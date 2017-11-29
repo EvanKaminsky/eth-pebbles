@@ -1,3 +1,11 @@
+# Approach 3 - Import blocks and loop to print out metrics at checkpoints
+in one tab:
+localgeth --datadir tmp/eth1 --metrics console
+> admin.importChain('ethereumMainnetBlockchain-2016-05-30.binary')
+
+in another tab:
+localgeth --exec 'loadScript("read-metrics.js")' attach /Users/giladoved/dev/ethereum/eth-pebbles/tmp/eth1/geth.ipc
+
 # Approach 2 - Import blocks from a blockchain binary - Manually
 Run:
 localgeth --metrics --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
