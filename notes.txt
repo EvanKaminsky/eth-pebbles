@@ -1,14 +1,26 @@
+delete the tmp/eth1 folder <- make sure that's the name fam or it wont work
+localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
+control-c right before 100k, 200k, 300k, 400k, 500k blocks
+localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
+import the stats code
+run stats() and save the output
+
+
 # Approach 3 - Import blocks and loop to print out metrics at checkpoints
 in one tab:
-localgeth --datadir tmp/eth1 --metrics console
+localgeth --datadir tmp/eth1 --metrics --networkid 1999 console
 > admin.importChain('ethereumMainnetBlockchain-2016-05-30.binary')
+or 
+> admin.importChain('../../../Downloads/ethereumMainnetBlockchain-2016-05-30.binary')
+> admin.importChain('../../../Downloads/ethereumTestnetBlockchain-2016-06-04.binary')
+> admin.importChain('../../../Downloads/blockchain_eth_20170810_2320.export')
 
 in another tab:
-localgeth --exec 'loadScript("read-metrics.js")' attach /Users/giladoved/dev/ethereum/eth-pebbles/tmp/eth1/geth.ipc
+localgeth --exec 'loadScript("read-metrics.js")' --networkid 1999 attach /Users/giladoved/dev/ethereum/eth-pebbles/tmp/eth1/geth.ipc
 
 # Approach 2 - Import blocks from a blockchain binary - Manually
 Run:
-localgeth --metrics --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
+localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
 
 When it reaches one segment before the desired amount, control-C it.
 
@@ -31,7 +43,7 @@ localgeth removedb
 # Approach 2 - Import blocks from a blockchain binary
 localgeth import data/ethereumMainnetBlockchain-2016-05-30.binary  --datadir /Users/evankaminsky/Desktop/Ethereum/go-ethereum/eth-pebbles/tmp/importnet1
 
-localgeth --datadir tmp/testnet1 --metrics console
+localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
 
 
 
