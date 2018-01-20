@@ -1,6 +1,8 @@
 function stats() {
     console.log("Reads:\t\t"     + debug.metrics(true).eth.db.chaindata.user.readscount.Overall);
     console.log("Writes:\t\t"    + debug.metrics(true).eth.db.chaindata.user.writescount.Overall);
+    console.log("Reads (bytes):\t"     + debug.metrics(true).eth.db.chaindata.user.reads.Overall);
+    console.log("Writes (bytes):\t"    + debug.metrics(true).eth.db.chaindata.user.writes.Overall);
     console.log("Pending:\t"     + eth.pendingTransactions.length);
     console.log("Pending-Str:\t" + eth.getBlock("pending").transactions.length);
     console.log("Peers:\t\t"     + admin.peers.length);
