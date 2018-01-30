@@ -1,13 +1,21 @@
-delete the tmp/eth1 folder <- make sure that's the name fam or it wont work
-localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
-control-c right before 100k, 200k, 300k, 400k, 500k blocks
+
+# Working Approaches #
+
+# Manual Method
+Delete the tmp/eth1 folder 		<- Make sure that's the name or it won't work (no clue why)
+localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import data/ethereumMainnetBlockchain-2016-05-30.binary
+Control-C right before 100k, 200k, 300k, 400k, 500k blocks
 localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
-import the stats code
-run stats() and save the output
+Import the stats code
+Run stats() and save the output
 
 
-# Approach 3 - Import blocks and loop to print out metrics at checkpoints
-in one tab:
+
+# Failed Aproaches #
+
+# 4 - Import blocks and loop to print out metrics at checkpoints
+
+In one tab:
 localgeth --datadir tmp/eth1 --metrics --networkid 1999 console
 > admin.importChain('ethereumMainnetBlockchain-2016-05-30.binary')
 or 
@@ -15,10 +23,12 @@ or
 > admin.importChain('../../../Downloads/ethereumTestnetBlockchain-2016-06-04.binary')
 > admin.importChain('../../../Downloads/blockchain_eth_20170810_2320.export')
 
-in another tab:
+In another tab:
 localgeth --exec 'loadScript("read-metrics.js")' --networkid 1999 attach /Users/giladoved/dev/ethereum/eth-pebbles/tmp/eth1/geth.ipc
 
-# Approach 2 - Import blocks from a blockchain binary - Manually
+
+# 3 - Import blocks from a blockchain binary manually
+
 Run:
 localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
 
@@ -39,15 +49,14 @@ rm -rf tmp/eth1
 localgeth removedb
 
 
+# 2 - Import blocks from a blockchain binary
 
-# Approach 2 - Import blocks from a blockchain binary
 localgeth import data/ethereumMainnetBlockchain-2016-05-30.binary  --datadir /Users/evankaminsky/Desktop/Ethereum/go-ethereum/eth-pebbles/tmp/importnet1
 
 localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
 
 
-
-# Approach 1 - Setup local network with one transaction net and two mining nets
+# 1 - Setup local network with one transaction net and two mining nets
 localgeth --datadir tmp/testnet1 account new -> Non-Miner, Put account hash in genesis block
 localgeth --datadir tmp/testnet1 account new
 localgeth --datadir tmp/testnet2 account new -> Miner 1
@@ -66,7 +75,9 @@ Do transactions on node 1
 miner.start(1)              -> Start miner on node 2
 miner.start(1)              -> Start miner on node 3
 
-# Links & Resources
+ 
+# Links & Resources #
+
 https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster
 https://gist.github.com/giladoved/d753d66cb5caca118a0cab59aa4b265f
 

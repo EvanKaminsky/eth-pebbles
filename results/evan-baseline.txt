@@ -1,0 +1,109 @@
+Evan's Results (1/29/18)
+
+// 100K
+
+Reads:			196708
+Writes:			52
+Reads (bytes):	55865483
+Writes (bytes):	1262
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		102500
+
+
+// 200K
+
+> Before
+Reads:			134439
+Writes:			36
+Reads (bytes):	38252212
+Writes (bytes):	942
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		202500
+
+> After
+Reads:			401558
+Writes:			102
+Reads (bytes):	113675462
+Writes (bytes):	2262
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		202500
+
+
+// 300K
+
+> Before
+Reads:			394719
+Writes:			100
+Reads (bytes):	111801422
+Writes (bytes):	2222
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		302500
+
+> After
+Reads:			598214
+Writes:			150
+Reads (bytes):	169018024
+Writes (bytes):	3222
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		302500
+
+
+// 400K
+
+> Before
+Reads:			160833
+Writes:			41
+Reads (bytes):	45707170
+Writes (bytes):	1061
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		402500
+
+> After
+Reads:			803064
+Writes:			200
+Reads (bytes):	227066004
+Writes (bytes):	4222
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		402500
+
+
+// 500K
+
+> Before
+Reads:			140338
+Writes:			37
+Reads (bytes):	39914713
+Writes (bytes):	981
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		502500
+
+> After
+Reads:			999720
+Writes:			248
+Reads (bytes):	282936587
+Writes (bytes):	5182
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		502500
+
+
+
+
+
