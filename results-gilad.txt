@@ -40,10 +40,10 @@ Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739
 
 Reads:          999720
 Writes:         247
-Reads (bytes):  282936587
+Reads (bytes):  282937736
 Writes (bytes): 5181
 Pending:        0
 Pending-Str:    0
 Peers:          0
-Block #:        502500
-Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
+Block #:        500000
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@71.41.18.147:30303
