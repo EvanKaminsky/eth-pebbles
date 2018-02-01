@@ -1,0 +1,49 @@
+Reads:          196708
+Writes:         52
+Reads (bytes):  55864415
+Writes (bytes): 1262
+Pending:        0
+Pending-Str:    0
+Peers:          0
+Block #:        100000
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
+
+Reads:          393364
+Writes:         100
+Reads (bytes):  111369294
+Writes (bytes): 2222
+Pending:        0
+Pending-Str:    0
+Peers:          0
+Block #:        200000
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
+
+Reads:          598214
+Writes:         149
+Reads (bytes):  169018327
+Writes (bytes): 3221
+Pending:        0
+Pending-Str:    0
+Peers:          0
+Block #:        300000
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
+
+Reads:          794870
+Writes:         198
+Reads (bytes):  224741146
+Writes (bytes): 4182
+Pending:        0
+Pending-Str:    0
+Peers:          0
+Block #:        400000
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
+
+Reads:          999720
+Writes:         247
+Reads (bytes):  282936587
+Writes (bytes): 5181
+Pending:        0
+Pending-Str:    0
+Peers:          0
+Block #:        502500
+Enode: enode://efcd3ac7758a4ca19be6d6db16e2de4805d6fcdf66ffff2347f1c6b17c3357739c236828c368f55439e210ef16b2dcdfcffbd3fddbea30eddb457c8685b9aea8@[::]:30303
