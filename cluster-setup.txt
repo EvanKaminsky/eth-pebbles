@@ -1,0 +1,105 @@
+# Full Process
+
+// Clean Up //
+
+cd ~/Desktop/Ethereum/go-ethereum/eth-pebbles
+localgeth removedb tmp/eth1
+localgeth removedb tmp/eth2
+localgeth removedb tmp/eth3
+open tmp
+# Delete eth1, eth2, eth3
+
+
+// Import Node //
+
+(1) localgeth --lightserv 50 --metrics --datadir tmp/eth1 --ipcdisable --port 30301 --rpcport 8101 --networkid 1234 import data/ethereumMainnetBlockchain-2016-05-30.binary
+
+(2) > Control-C after it imports some blocks
+
+(3) localgeth --lightserv 50 --metrics --datadir tmp/eth1 --ipcdisable --port 30301 --rpcport 8101 --networkid 1234 console
+
+(4) > Import stats script, stats() for enode idenfitier
+
+(5) > admin.importChain("data/ethereumMainnetBlockchain-2016-05-30.binary")
+
+
+// Light Peer Node //
+
+(6) localgeth --syncmode "light" --metrics --maxpeers 1 --datadir tmp/eth3 --ipcdisable --port 30303 --rpcport 8103 --networkid 1234 console
+
+(7) > Import stats script
+
+(8) > admin.addPeer("enode://dd2a382f87bf314ed9bdcf6ebf695a2fc03939ed3343ebf92b5d9eee1faf50d8c109bd69a19078b35754cc1cc25b7da550aa71784c578ac3ade6f8d63405e673@[::]:30301")
+
+(9) Synchronization
+
+
+// Full Peer Node //
+
+(6-1) localgeth --metrics --maxpeers 1 --datadir tmp/eth2 --ipcdisable --port 30302 --rpcport 8102 --networkid 1234 console
+
+(7-1) > Import stats script
+
+(8-1) > admin.addPeer("enode://dd2a382f87bf314ed9bdcf6ebf695a2fc03939ed3343ebf92b5d9eee1faf50d8c109bd69a19078b35754cc1cc25b7da550aa71784c578ac3ade6f8d63405e673@[::]:30301")
+
+(9-1) Synchronization
+
+
+
+#################################################################
+
+# Helpful Commands
+
+localgeth removedb --datadir tmp/eth3
+
+ifconfig|grep netmask|awk '{print $2}'
+
+
+
+#################################################################
+
+# Networking Nodes Example
+
+localgeth --datadir="/tmp/testnet1" --ipcdisable --port 30301 --rpcport 8101 --networkid 1234 console
+
+> admin.nodeInfo.enode
+
+localgeth --datadir="/tmp/testnet2" --ipcdisable --port 30302 --rpcport 8102 --networkid 1234 console
+
+> admin.addPeer("enode://db9cd62070e4f01584063367042ff1e0592152766ff06ebe6cd02891180215a3c2232f37bb2118c6f0441fc9b66bf4570b0058419ddceaf7a8a8f7b9cc925f5f@10.147.141.121:30301")
+
+
+
+#################################################################
+
+# One Node Binary Import Example (Manual Method)
+
+Delete the tmp/eth1 folder 		<- Only worked when datadir=tmp/eth1
+localgeth --metrics --maxpeers 0 --datadir tmp/fullbinary --networkid 1234 import data/ethereumMainnetBlockchain-2016-05-30.binary
+> Control-C right before 100k, 200k, 300k, 400k, 500k blocks
+localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
+> Import the stats code
+> Run stats() and save the output
+
+
+
+#################################################################
+
+// Pandian's Light Peer Hack //
+
+(6a) localgeth --syncmode "light" --metrics --maxpeers 1 --datadir tmp/eth3 --ipcdisable --port 30303 --rpcport 8103 --networkid 1234 import data/ethereumMainnetBlockchain-2016-05-30.binary
+
+(7a) > Control-C
+
+(8a) localgeth --syncmode "light" --metrics --maxpeers 1 --datadir tmp/eth3 --ipcdisable --port 30303 --rpcport 8103 --networkid 1234 console
+
+(9a) > Import stats script
+
+(10a) > admin.addPeer("enode://3039888600fa520c3014697f19df053502873ccf538b2e47d579a201044fa96899a3cf2814ca53c07b14beb58289ee90be54715acb4b49bebd3351770fdd5b68@[::]:30301")
+
+(11a) Synchronization
+
+
+
+
+

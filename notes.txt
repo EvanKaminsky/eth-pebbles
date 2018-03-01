@@ -1,117 +1,41 @@
-
-# Working Approaches #
-
-# Manual Method
-Delete the tmp/eth1 folder 		<- Make sure that's the name or it won't work (no clue why)
-localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import data/ethereumMainnetBlockchain-2016-05-30.binary
-Control-C right before 100k, 200k, 300k, 400k, 500k blocks
-localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
-Import the stats code
-Run stats() and save the output
+# Readings & Information #
 
 
+// Light Client //
 
-# Failed Aproaches #
-
-# 4 - Import blocks and loop to print out metrics at checkpoints
-
-In one tab:
-localgeth --datadir tmp/eth1 --metrics --networkid 1999 console
-> admin.importChain('ethereumMainnetBlockchain-2016-05-30.binary')
-or 
-> admin.importChain('../../../Downloads/ethereumMainnetBlockchain-2016-05-30.binary')
-> admin.importChain('../../../Downloads/ethereumTestnetBlockchain-2016-06-04.binary')
-> admin.importChain('../../../Downloads/blockchain_eth_20170810_2320.export')
-
-In another tab:
-localgeth --exec 'loadScript("read-metrics.js")' --networkid 1999 attach /Users/giladoved/dev/ethereum/eth-pebbles/tmp/eth1/geth.ipc
+https://github.com/ethereum/wiki/wiki/Light-client-protocol
 
 
-# 3 - Import blocks from a blockchain binary manually
+// Data Structures //
 
-Run:
-localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1999 import ethereumMainnetBlockchain-2016-05-30.binary
+Merkle (Hash) Trees
+> Internal nodes labeled with the hash of its children's labels
+> Leaf nodes labeled with the hash of corresponding data
+> Top (Master) hash acquired from a trusted source, used to verify hash trees from non-trusted sources
 
-When it reaches one segment before the desired amount, control-C it.
+Radix Trees
+> Space-optimized tries: Only children nodes are merged with their parents
+> PATRIDITA Tree: radix = 2, Each bit of the key is compared individually, binary tree
 
-In the console get the stats:
-
-eth.blockNumber
-debug.metrics(true).eth.db.chaindata.user.readscount
-debug.metrics(true).eth.db.chaindata.user.reads
-debug.metrics(true).eth.db.chaindata.user.writescount
-debug.metrics(true).eth.db.chaindata.user.writes
-
-localgeth --metrics --datadir tmp/eth1 --networkid 1999 console
-
-To reset the experiment do:
-rm -rf tmp/eth1
-localgeth removedb
+Меrkle Patricia Trie Specification - Ethereum
+> https://github.com/ethereum/wiki/wiki/Patricia-Tree
 
 
-# 2 - Import blocks from a blockchain binary
+// Stateless //
 
-localgeth import data/ethereumMainnetBlockchain-2016-05-30.binary  --datadir /Users/evankaminsky/Desktop/Ethereum/go-ethereum/eth-pebbles/tmp/importnet1
+Vitaly's Proposal
+> https://ethresear.ch/t/the-stateless-client-concept/172
 
-localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
+Eth Sharding Intro
+> https://github.com/ethereum/sharding/blob/develop/docs/doc.md 
 
-
-# 1 - Setup local network with one transaction net and two mining nets
-localgeth --datadir tmp/testnet1 account new -> Non-Miner, Put account hash in genesis block
-localgeth --datadir tmp/testnet1 account new
-localgeth --datadir tmp/testnet2 account new -> Miner 1
-localgeth --datadir tmp/testnet3 account new -> Miner 2
-localgeth --datadir tmp/testnet1 --networkid 1999 init BaselineGenesis.json
-localgeth --datadir tmp/testnet2 --networkid 1999 init BaselineGenesis.json
-localgeth --datadir tmp/testnet3 --networkid 1999 init BaselineGenesis.json
-localgeth --datadir tmp/testnet1 --networkid 1999 --port 35555 --ipcdisable --rpcport 8101 --maxpeers 3 --metrics console
-localgeth --datadir tmp/testnet2 --networkid 1999 --port 35556 --ipcdisable --rpcport 8102 --maxpeers 3 --metrics console
-localgeth --datadir tmp/testnet3 --networkid 1999 --port 35557 --ipcdisable --rpcport 8103 --maxpeers 3 --metrics console
-admin.nodeInfo.enode        -> In node 1, save result
-admin.addPeer(...)          -> In miner node 1, use result from previous
-admin.addPeer(...)          -> In miner node 2, use result from previous previous
-admin.peers                 -> Check that they're connected
-Do transactions on node 1
-miner.start(1)              -> Start miner on node 2
-miner.start(1)              -> Start miner on node 3
-
- 
-# Links & Resources #
-
-https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster
-https://gist.github.com/giladoved/d753d66cb5caca118a0cab59aa4b265f
-
-https://ethereum.stackexchange.com/questions/13547/how-to-set-up-a-private-network-and-connect-peers-in-geth
-http://iotbl.blogspot.in/2017/03/setting-up-private-ethereum-testnet.html
-
-https://github.com/ethereum/go-ethereum/issues/2769
+Account R/W Lists
+> https://ethresear.ch/t/account-read-write-lists/285
 
 
-# Individual Components #
+// Proof-of-Stake // 
 
-# Setup
-localgeth --datadir tmp/testnet1 account new
-localgeth --datadir tmp/testnet1 --networkid 1999 init BaselineGenesis.json
-localgeth --datadir tmp/testnet1 --networkid 1999 --port 35555 --ipcdisable --rpcport 8101 --maxpeers 2 -metrics console
+> https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ
 
-# Test Transactions
-localgeth --datadir tmp/testnet1 --networkid 1999  --port 35555 --metrics --exec 'loadScript("tmp/test-script.js")' attach tmp/testnet1/geth.ipc
-
-# Debug Keys
-debug.metrics(true).eth.db.chaindata.user.readscount
-
-# Adding Peers
-localgeth --datadir tmp/testnet2 --networkid 1999 init BaselineGenesis.json
-localgeth --datadir tmp/testnet2 --networkid 1999 --port 35556 --ipcdisable --rpcport 8102 --maxpeers 2 --metrics console
-Other parameters: --nodiscover --maxpeers 1 --rpccorsdomain "*" --rpc     
-admin.nodeInfo.enode
-admin.addPeer(...)
-
-
-# Commands #
-
-eth.pendingTransactions
-eth.accounts
-admin.peers
-net.listening
-miner.start(1)
+Vitaly
+> https://medium.com/@VitalikButerin/a-proof-of-stake-design-philosophy-506585978d51

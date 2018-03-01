@@ -1,0 +1,93 @@
+
+
+# Import Node #
+
+# Post Import
+Reads:			41004
+Writes:			14
+Reads (bytes):	9401748
+Writes (bytes):	526
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		10000
+Enode: enode://0b8e71188208e558e2db26a7acf708e2d950f058ff8ee6c146d1c224a3fdb5c0b6ae1a14dc4f756b7568b7eb4a2c492a444d1f1540d8636edc15544ff50cfbe9@[::]:30301
+
+# Post Light Synch
+Reads:			61109
+Writes:			14
+Reads (bytes):	15124832
+Writes (bytes):	526
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		10000
+Enode: enode://0b8e71188208e558e2db26a7acf708e2d950f058ff8ee6c146d1c224a3fdb5c0b6ae1a14dc4f756b7568b7eb4a2c492a444d1f1540d8636edc15544ff50cfbe9@[::]:30301
+
+# Post Full Synch
+Reads:			89967		+78 reads per full node synch attempt
+Writes:			14
+Reads (bytes):	23109963	+2496 read bytes per full node synch attempt
+Writes (bytes):	526
+Pending:		0
+Pending-Str:	0
+Peers:			2
+Block #:		10000
+Enode: enode://0b8e71188208e558e2db26a7acf708e2d950f058ff8ee6c146d1c224a3fdb5c0b6ae1a14dc4f756b7568b7eb4a2c492a444d1f1540d8636edc15544ff50cfbe9@[::]:30301
+
+
+# Light Node #
+
+# Raw
+Reads:			9
+Writes:			18
+Reads (bytes):	1215
+Writes (bytes):	1133
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		0
+Enode: enode://27363bef24d8692402b132956de3db4abfa0d90a809c0c4ea5502e14c9b2195bce69a4be53f7a9c8ff53ccae3d22cdda152459b8aa4a254a31af1302835bf1ad@[::]:30303?discport=0
+
+# Post Synch
+Reads:			17079
+Writes:			50019
+Reads (bytes):	4117085
+Writes (bytes):	6171064
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		10000
+Enode: enode://27363bef24d8692402b132956de3db4abfa0d90a809c0c4ea5502e14c9b2195bce69a4be53f7a9c8ff53ccae3d22cdda152459b8aa4a254a31af1302835bf1ad@[::]:30303?discport=0
+
+
+# Full Node #
+
+# Raw
+Reads:			16
+Writes:			12
+Reads (bytes):	3926
+Writes (bytes):	951
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		0
+Enode: enode://34a334fd8261d83228f74c2dfc1d5635e72652e9f14f96a168ff5302ad3416ae178f7a2218484de43acf0419d9ae80d29ec1b93c9d991dbda235bfab76086cbc@[::]:30302
+
+# Post Synch
+Reads:			17085		# +1 read every synch attempt
+Writes:			54080	
+Reads (bytes):	3135883		# +532 read bytes every synch attempt
+Writes (bytes):	6301055
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		0
+Enode: enode://34a334fd8261d83228f74c2dfc1d5635e72652e9f14f96a168ff5302ad3416ae178f7a2218484de43acf0419d9ae80d29ec1b93c9d991dbda235bfab76086cbc@[::]:30302
+
+
+
+
+
+
+
