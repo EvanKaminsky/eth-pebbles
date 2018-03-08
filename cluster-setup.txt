@@ -2,12 +2,13 @@
 
 // Clean Up //
 
-cd ~/Desktop/Ethereum/go-ethereum/eth-pebbles
+cd ~/Desktop/Ethereum/eth-pebbles
 localgeth removedb tmp/eth1
 localgeth removedb tmp/eth2
 localgeth removedb tmp/eth3
-open tmp
-# Delete eth1, eth2, eth3
+rm -rf tmp/eth1
+rm -rf tmp/eth2
+rm -rf tmp/eth3
 
 
 // Import Node //
@@ -29,7 +30,7 @@ open tmp
 
 (7) > Import stats script
 
-(8) > admin.addPeer("enode://dd2a382f87bf314ed9bdcf6ebf695a2fc03939ed3343ebf92b5d9eee1faf50d8c109bd69a19078b35754cc1cc25b7da550aa71784c578ac3ade6f8d63405e673@[::]:30301")
+(8) > admin.addPeer("enode://960aec47a22cfa55316f885179789db261bf11a321cc07b04d4ad7e7a3fa05b77a11d6be255f7e63cbe8c604fbe1010daa39717d62b80628b2d47b2519fed423@[::]:30301")
 
 (9) Synchronization
 
@@ -40,9 +41,49 @@ open tmp
 
 (7-1) > Import stats script
 
-(8-1) > admin.addPeer("enode://dd2a382f87bf314ed9bdcf6ebf695a2fc03939ed3343ebf92b5d9eee1faf50d8c109bd69a19078b35754cc1cc25b7da550aa71784c578ac3ade6f8d63405e673@[::]:30301")
+(8-1) > admin.addPeer("enode://960aec47a22cfa55316f885179789db261bf11a321cc07b04d4ad7e7a3fa05b77a11d6be255f7e63cbe8c604fbe1010daa39717d62b80628b2d47b2519fed423@[::]:30301")
 
 (9-1) Synchronization
+
+
+
+
+#################################################################
+
+# Making our own Archive
+
+
+1) Adjust Desired Block #
+
+> Set fsMinFullBlocks to desired # of blocks in eth/downloader/downloader.go
+	- Default is 64
+
+> make geth
+
+
+2) Remove old mainnet
+
+cd ~/Desktop/Ethereum/eth-pebbles
+localgeth removedb tmp/mainnet
+rm -rf tmp/mainnet
+
+
+3) Pulling
+
+localgeth --metrics --cache=1024 --datadir tmp/mainnet console
+
+
+4) Inspecting
+
+> localgeth --metrics --maxpeers 0 --ipcdisable --datadir tmp/mainnet console
+
+> Import Stats Script
+
+
+5) Exporting
+
+localgeth --datadir tmp/mainnet export testexportname 0 10000
+
 
 
 

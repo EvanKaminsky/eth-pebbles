@@ -1,0 +1,86 @@
+results_10000 2
+# Now with CHT root analysis!
+
+
+# Import Node #
+
+# Post Import
+Reads:			41004
+Writes:			14
+Reads (bytes):	9401748
+Writes (bytes):	526
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		10000
+Enode: enode://960aec47a22cfa55316f885179789db261bf11a321cc07b04d4ad7e7a3fa05b77a11d6be255f7e63cbe8c604fbe1010daa39717d62b80628b2d47b2519fed423@[::]:30301
+
+# After both Light & Full Syncg
+Reads:			89421
+Writes:			14
+Reads (bytes):	23092491
+Writes (bytes):	526
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		10000
+Enode: enode://960aec47a22cfa55316f885179789db261bf11a321cc07b04d4ad7e7a3fa05b77a11d6be255f7e63cbe8c604fbe1010daa39717d62b80628b2d47b2519fed423@[::]:30301
+
+
+# Light Node #
+
+# Raw
+Reads:			16
+Writes:			4
+Reads (bytes):	1579
+Writes (bytes):	364
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		0
+Enode: enode://d3fb931b9ce4bf1d18b6c92a8165fd26805f4995d0a30b622455723f9ef4bb9eb3b3468dc4672a18d2bc2583d247094db073a945f9783d8092ccc27644374862@[::]:30306?discport=0
+
+# Post Synch
+light/postprocess.go > [BEFORE] Getting CHT root!!!
+Metrics <Read Count: 19 | Write Count: 4 | Read Bytes: 1649 | Write Bytes: 364>
+light/postprocess.go > [AFTER] Getting CHT root!!!
+Metrics <Read Count: 20 | Write Count: 4 | Read Bytes: 1681 | Write Bytes: 364>
+
+Reads:			17086
+Writes:			50005
+Reads (bytes):	4117449
+Writes (bytes):	6170295
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		10000
+Enode: enode://d3fb931b9ce4bf1d18b6c92a8165fd26805f4995d0a30b622455723f9ef4bb9eb3b3468dc4672a18d2bc2583d247094db073a945f9783d8092ccc27644374862@[::]:30306?discport=0
+
+
+# Full Node #
+
+# Raw
+Reads:			22
+Writes:			3
+Reads (bytes):	4268
+Writes (bytes):	301
+Pending:		0
+Pending-Str:	0
+Peers:			0
+Block #:		0
+Enode: enode://ef8a7e22fdba818f1699f88a80c720682cb85a6ab0a6cfb2579ec9ef52f1522972c027ec7cadb4b2d4048dea2a82060a9c18f324773dbeb2f86ef56c15d21648@[::]:30308
+
+
+# Post Synch
+Reads:			17090		# +1 read every synch attempt
+Writes:			54072
+Reads (bytes):	3135175		# +532 read bytes every synch attempt
+Writes (bytes):	6300437
+Pending:		0
+Pending-Str:	0
+Peers:			1
+Block #:		0
+Enode: enode://ef8a7e22fdba818f1699f88a80c720682cb85a6ab0a6cfb2579ec9ef52f1522972c027ec7cadb4b2d4048dea2a82060a9c18f324773dbeb2f86ef56c15d21648@[::]:30308
+
+
+
