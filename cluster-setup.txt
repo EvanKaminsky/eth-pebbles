@@ -116,12 +116,14 @@ localgeth --datadir="/tmp/testnet2" --ipcdisable --port 30302 --rpcport 8102 --n
 # One Node Binary Import Example (Manual Method)
 
 Delete the tmp/eth1 folder 		<- Only worked when datadir=tmp/eth1
-localgeth --metrics --maxpeers 0 --datadir tmp/fullbinary --networkid 1234 import data/ethereumMainnetBlockchain-2016-05-30.binary
+localgeth --metrics --maxpeers 0 --datadir tmp/eth1 --networkid 1234 import data/ethereumMainnetBlockchain-2016-05-30.binary
 > Control-C right before 100k, 200k, 300k, 400k, 500k blocks
 localgeth --datadir tmp/eth1 --maxpeers 0 --metrics console
 > Import the stats code
 > Run stats() and save the output
 
+
+localgeth --datadir tmp/fullnet
 
 
 #################################################################
